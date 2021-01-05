@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Auth;
 class ProductsController extends Controller
 {
 
+    public function history()
+    {
+       $history = History::get();
+	   return view( 'history', ['history' => $history ] );
+    }
+
     public function index()
     {
        $products = Product::get();

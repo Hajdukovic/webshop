@@ -61,7 +61,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="">Moja povijest kupnje</a>
+                                <a class="nav-link" href="{{ route('history') }}">Moja povijest kupnje</a>
                             </li>
 									
 							<li class="nav-item">

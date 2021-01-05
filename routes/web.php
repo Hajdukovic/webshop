@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\ProductsController@index' )->name('pocetna');
 
+
+Route::get('/history', 'App\Http\Controllers\ProductsController@history' )->name('history');
+
 Auth::routes();
 
 Route::post('/cartadd/{id}', 'App\Http\Controllers\ProductsController@addToCart' );
