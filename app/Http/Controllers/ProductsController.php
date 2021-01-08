@@ -10,15 +10,9 @@ use Illuminate\Support\Facades\Auth;
 class ProductsController extends Controller
 {
 
-    public function history()
-    {
-       $history = History::get();
-	   return view( 'history', ['history' => $history ] );
-    }
-
     public function index()
     {
-       $products = Product::get();
+       $products = Product::where('amount','>','0')->get();
 	   return view( 'welcome', ['products' => $products ] );
     }
 		
@@ -113,6 +107,18 @@ class ProductsController extends Controller
 		$cart = array();
 		session()->put('cart', $cart);
         return redirect()->route('pocetna');  
+    }
+
+    public function history()
+    {
+       $history = History::get();
+	   return view( 'history', ['history' => $history ] );
+    }
+	
+	public function historyAdmin()
+    {
+       $history = History::get();
+	   return view( 'historyAdmin', ['history' => $history ] );
     }
 
 

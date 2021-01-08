@@ -51,19 +51,19 @@
 
                             <div class="col-md-6">
                                 <div class="form-check">
-									<input class="form-check-input" type="radio" name="payment" id="exampleRadios1" checked>
+									<input class="form-check-input" value="kartica" type="radio" name="payment" id="exampleRadios1" checked>
 									<label class="form-check-label" for="exampleRadios1">
 										Plaćanje Karticom
 								    </label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="payment" id="exampleRadios2">
+									<input class="form-check-input" value="uplatnica" type="radio" name="payment" id="exampleRadios2">
 									<label class="form-check-label" for="exampleRadios2">
 										Plaćanje putem dostave uplatnice
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="payment" id="exampleRadios3">
+									<input class="form-check-input" value="pouzeće" type="radio" name="payment" id="exampleRadios3">
 									<label class="form-check-label" for="exampleRadios3">
 										Plaćanje pouzećem
 									</label>

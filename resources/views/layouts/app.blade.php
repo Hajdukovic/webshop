@@ -23,6 +23,11 @@
 	    .row {
 			padding: 5px;
 		}
+		.nav-item a{
+            display:inline-block;
+            text-align: left;
+            margin-left: 5px;
+        }
 	</style>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
@@ -61,11 +66,20 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('history') }}">Moja povijest kupnje</a>
+                                <a class="nav-link" href="history">Moja povijest kupnje</a>
                             </li>
+							
+							@if (Auth::user()->role==2)
+							<li class="nav-item">
+                                <a class="nav-link" href="historyAdmin">Povijest kupnje</a>
+                            </li>
+						    @endif
 									
 							<li class="nav-item">
-                                <a class="nav-link">Prijavljen: {{ Auth::user()->name }} {{ Auth::user()->surname }} </a>
+							    <a class="nav-link">Prijavljen:</a>
+							</li>
+							<li>
+                                <a class="nav-link" href="profil">{{ Auth::user()->name }} {{ Auth::user()->surname }} </a>
                             </li>
                         								
                             <li class="nav-item">
@@ -81,11 +95,11 @@
 						 <div style="position:relative; left:500px;">
 						  @if (session()->get('cart'))
 						       <li class="nav-item">
-						          <a class="nav-link" href="cart"> Košarica ({{ count(session()->get('cart')) }})</a>
+						          <a href="cart"><img src="./slike/cart.png" height="60px" /></a> ({{ count(session()->get('cart')) }})
 						      </li>
 						  @else
 							  <li class="nav-item">
-						          <a class="nav-link"> Košarica je prazna</a>
+						          <img src="./slike/cart.png" height="30px" /> prazna
 						      </li>
 						  @endif
 						 </div>

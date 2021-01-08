@@ -14,6 +14,9 @@ class History extends Model
     {
         return $this->belongsTo('App\Models\Product', 'idproduct');
     }
+	
+	public function user() {
+		return $this->belongsTo('App\Models\User', 'iduser');
+	}
 
 }
-

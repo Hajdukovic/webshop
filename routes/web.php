@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -15,9 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\ProductsController@index' )->name('pocetna');
 
-
-Route::get('/history', 'App\Http\Controllers\ProductsController@history' )->name('history');
-
 Auth::routes();
 
 Route::post('/cartadd/{id}', 'App\Http\Controllers\ProductsController@addToCart' );
@@ -28,3 +26,16 @@ Route::get('/cart', 'App\Http\Controllers\ProductsController@cart' );
 Route::post('/kupi', 'App\Http\Controllers\ProductsController@buyFromCart' );
 
 Route::get('/home', 'App\Http\Controllers\ProductsController@index' );
+
+Route::get('/history', 'App\Http\Controllers\ProductsController@history' )->name('history');
+Route::get('/historyAdmin', 'App\Http\Controllers\ProductsController@historyAdmin' )->name('historyAdmin');
+
+Route::get('/profil', 'App\Http\Controllers\UserController@profil' )->name('profil');
+Route::post('/changepass', 'App\Http\Controllers\UserController@changepass' );
+
+
+
+
+
+
+
