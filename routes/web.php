@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -18,12 +17,12 @@ Route::get('/', 'App\Http\Controllers\ProductsController@index' )->name('pocetna
 
 Auth::routes();
 
-Route::post('/cartadd/{id}', 'App\Http\Controllers\ProductsController@addToCart' );
+Route::post('/cartadd/{id}', 'App\Http\Controllers\ProductsController@addToCart' )->name('cartadd');
 Route::get('/cartdel/{id}', 'App\Http\Controllers\ProductsController@removeFromCart');
 Route::post('/cartup/{id}', 'App\Http\Controllers\ProductsController@updateCart');
-Route::get('/cart', 'App\Http\Controllers\ProductsController@cart' );
+Route::get('/cart', 'App\Http\Controllers\ProductsController@cart' )->name('cart');
 
-Route::post('/kupi', 'App\Http\Controllers\ProductsController@buyFromCart' );
+Route::post('/kupi', 'App\Http\Controllers\ProductsController@buyFromCart')->name('kupi');
 
 Route::get('/home', 'App\Http\Controllers\ProductsController@index' );
 
@@ -33,9 +32,7 @@ Route::get('/historyAdmin', 'App\Http\Controllers\ProductsController@historyAdmi
 Route::get('/profil', 'App\Http\Controllers\UserController@profil' )->name('profil');
 Route::post('/changepass', 'App\Http\Controllers\UserController@changepass' );
 
-
-
-
-
-
-
+Route::get('/show/{id}', 'App\Http\Controllers\ProductsController@show');
+Route::get('/addprod', 'App\Http\Controllers\ProductsController@create')->name('addprod');
+Route::post('/storeprod', 'App\Http\Controllers\ProductsController@store')->name('storeprod');
+Route::post('/changeamount/{id}', 'App\Http\Controllers\ProductsController@changeamount');

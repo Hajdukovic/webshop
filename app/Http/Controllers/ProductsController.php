@@ -129,7 +129,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+        return view( 'addprod' );
     }
 
     /**
@@ -140,7 +140,21 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new Product;
+		$product->name = $request->all()['name'];
+		if ($request->all()['description']) $product->description = $request->all()['description'];
+		else $product->description = "";
+		$product->amount = $request->all()['amount'];
+		$product->price = $request->all()['price'];
+		if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $extension = $request->image->extension();
+			$product->image = "./slike/".$product->name.".".$extension;
+			$file = $request->file('image');
+			$file->move( "slike", $product->name.".".$extension );
+        }
+		else $product->image = "";
+		$product->save();
+		return redirect( '/' );
     }
 
     /**
@@ -149,9 +163,17 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id) {
+		$product = Product::find($id);
+        return view( 'show', ['product' => $product ] );
+    }
+	
+	public function changeamount(Request $request, $id)
     {
-        //
+        $product = Product::find($id);
+		$product->amount += $request->all()['kolicina'];
+		$product->save();
+		return redirect( '/' );
     }
 
     /**

@@ -66,12 +66,12 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="history">Moja povijest kupnje</a>
+                                <a class="nav-link" href="{{ route('history') }}">Moja povijest kupnje</a>
                             </li>
 							
 							@if (Auth::user()->role==2)
 							<li class="nav-item">
-                                <a class="nav-link" href="historyAdmin">Povijest kupnje</a>
+                                <a class="nav-link" href="{{ route('historyAdmin') }}">Povijest kupnje</a>
                             </li>
 						    @endif
 									
@@ -79,7 +79,7 @@
 							    <a class="nav-link">Prijavljen:</a>
 							</li>
 							<li>
-                                <a class="nav-link" href="profil">{{ Auth::user()->name }} {{ Auth::user()->surname }} </a>
+                                <a class="nav-link" href="{{ route('profil') }}">{{ Auth::user()->name }} {{ Auth::user()->surname }} </a>
                             </li>
                         								
                             <li class="nav-item">
@@ -92,10 +92,10 @@
 					
                    
                         @endguest
-						 <div style="position:relative; left:500px;">
+						 <div style="position:relative; left:200px;">
 						  @if (session()->get('cart'))
 						       <li class="nav-item">
-						          <a href="cart"><img src="./slike/cart.png" height="60px" /></a> ({{ count(session()->get('cart')) }})
+						          <a href="{{ route('cart') }}"><img src="./slike/cart.png" height="40px" /></a> ({{ count(session()->get('cart')) }})
 						      </li>
 						  @else
 							  <li class="nav-item">

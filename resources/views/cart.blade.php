@@ -43,7 +43,7 @@
                 <div class="card-header">Kupovina</div>
 
                 <div class="card-body">
-                    <form method="POST" action="kupi">
+                    <form method="POST" action="{{ route('kupi') }}">
                         @csrf
 
                         <div class="form-group row">
