@@ -36,3 +36,4 @@ Route::get('/show/{id}', 'App\Http\Controllers\ProductsController@show');
 Route::get('/addprod', 'App\Http\Controllers\ProductsController@create')->name('addprod');
 Route::post('/storeprod', 'App\Http\Controllers\ProductsController@store')->name('storeprod');
 Route::post('/changeamount/{id}', 'App\Http\Controllers\ProductsController@changeamount');
+

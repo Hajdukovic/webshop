@@ -39,10 +39,13 @@
 	                <td>
 				      <form method="POST" action="changeamount/{{$p->id}}">
 				      @csrf
-					    <input class="btn btn-light btn-sm" style="width:70px" type="number" name="kolicina" step="1" />
-						<input class="btn btn-outline-primary btn-sm" type="submit" value="Nadodaj na stanje"/>
+					    <input class="btn btn-light btn-sm" style="width:70px" type="number" name="kolicina" step="1" /> 
+						<input class="btn btn-outline-primary btn-sm" type="submit" value="Nadodaj na ukupnu količinu"/>  Trenutno stanje: {{$p->amount}} kom
 				   </form>
 				    </td>
+					<td>
+					
+					</td>
 		       @endif
 		       @endguest
 			 </tr>
