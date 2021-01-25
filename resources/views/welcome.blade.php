@@ -24,6 +24,16 @@
 		</tr>
            @foreach ($products as $p)
 		     <tr>
+			 			   <td>
+							@if ($p->image)
+							<img src="{{$p->image}}" style=" border: 3px solid #ddd;  border-radius: 14px;  padding: 5px;  width: 150px;" />
+							@else
+							<p>Ovaj proizvod nema sliku.</p>
+							@endif
+							
+							
+							</td>
+
 			   <td><a class="nav-link" href="show/{{$p->id}}">{{$p->name}}</a></td>
 			   <td align="right" style="padding-right:70px;">{{number_format($p->price,2,",",".")}}</td>
 			   <td>

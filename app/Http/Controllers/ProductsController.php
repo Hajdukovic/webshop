@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\History;
 use Illuminate\Support\Facades\Auth;
 
+
 class ProductsController extends Controller
 {
 

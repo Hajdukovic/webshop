@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
 Route::get('/', 'App\Http\Controllers\ProductsController@index' )->name('pocetna');
 
-Auth::routes();
+
 
 Route::post('/cartadd/{id}', 'App\Http\Controllers\ProductsController@addToCart' )->name('cartadd');
 Route::get('/cartdel/{id}', 'App\Http\Controllers\ProductsController@removeFromCart');
