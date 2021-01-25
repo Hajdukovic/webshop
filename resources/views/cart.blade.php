@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
 	    
-		<h1>Popis proizvoda u vašoj košarici</h1>
+		<h3>Popis proizvoda u vašoj košarici</h3>
         
         <table class="table">
 		<tr><th>Naziv proizvoda</th><th>Količina</th><th width="140px">Cijena [kn]</th><th>Akcija</th></tr>
@@ -25,15 +25,38 @@
 			   </td>
 			 </tr>
 		   @endforeach
+		  
 		   <tr>
-			   <td colspan="2" align="right">Ukupno:</td>
+			   <td colspan="2" align="right">Iznos računa bez PDV-a:</td>
 			   <td align="right"><b>{{number_format($ukupno,2,",",".")}}</b></td>
-			   <td> </td>
+			   
 			 </tr>
+
+			 <tr>
+			   <td colspan="2" align="right">Iznos PDV-a:</td>
+			   <td align="right"><b>{{number_format(($pdv),2,",",".")}}</b></td>
+			   
+			 </tr>
+			
+			 <tr>
+			   <td colspan="2" align="right">Usluga dostave:</td>
+			   
+			    <td align="right"><b>{{number_format($postarina,2,",",".")}}</b></td> 
+			   
+			 </tr>
+
+			 <tr>
+			   <td colspan="2" align="right">Iznos računa s PDV-om:</td>
+			   <td align="right"><b>{{number_format(($ukupno + $pdv + $postarina),2,",",".")}}</b></td>
+			   
+			 </tr>
+
+
+
         </table>
 		
 		@guest
-		   <p align="center">Kako biste obavili kupnju, morate se prijaviti</p>
+		   <p align="center">Za dovršetak kupovine, molimo Vas da se prijavite!</p>
 		   <a href="login" class="btn btn-outline-primary" role="button" aria-pressed="true" style="width:25%">Prijava</a>
 		@else
 <div class="container">
@@ -44,22 +67,27 @@
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('kupi') }}">
-                        @csrf
+						@csrf
+								
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">Način plaćanja:</label>
 
+							<label for="area">Podaci za dostavu (Unesite Vaše IME I PREZIME, ADRESU DOSTAVE I BROJ TELEFONA) : </label> <br/>
+							<br/><textarea name="podaci" id="area" cols="90" rows="5"></textarea>
+
+                            <label for="email" class="col-md-4 col-form-label text-md-right">Odaberite način plaćanja:</label>
+						
                             <div class="col-md-6">
-                                <div class="form-check">
+                                <!-- <div class="form-check">
 									<input class="form-check-input" value="kartica" type="radio" name="payment" id="exampleRadios1" checked>
 									<label class="form-check-label" for="exampleRadios1">
 										Plaćanje Karticom
 								    </label>
-								</div>
+								</div> --><br/>
 								<div class="form-check">
-									<input class="form-check-input" value="uplatnica" type="radio" name="payment" id="exampleRadios2">
+									<input class="form-check-input" value="uplatnica" type="radio" checked="checked" name="payment" id="exampleRadios2">
 									<label class="form-check-label" for="exampleRadios2">
-										Plaćanje putem dostave uplatnice
+										Plaćanje putem predračuna
 									</label>
 								</div>
 								<div class="form-check">
@@ -69,7 +97,8 @@
 									</label>
 								</div>
                             </div>
-                        </div>
+						</div>
+					
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">

@@ -55,14 +55,17 @@ class ProductsController extends Controller
 	
 	public function cart() {
 		$cart = session()->get('cart');
-		$ukupno = 0;
+        $ukupno = 0;
+        $postarina=50;
+        $pdv=0;
 		$amounts = array();
 		foreach ($cart as $c) {
 			$ukupno += $c['price'] * $c['quantity'];
 			$product = Product::find($c['id']);
 			$amounts[$c['id']] = $product->amount;
-		}
-		return view( 'cart', ['cart' => $cart, 'ukupno' => $ukupno, 'amounts' => $amounts ] );
+        }
+        $pdv=$ukupno*25/100;
+		return view( 'cart', ['cart' => $cart, 'ukupno' => $ukupno, 'amounts' => $amounts , 'postarina' => $postarina, 'pdv' => $pdv ] );
 	}
 
     public function removeFromCart($id)
@@ -84,7 +87,8 @@ class ProductsController extends Controller
 
 	public function buyFromCart(Request $request) {
         $cart = session()->get('cart');
-		$payment = $request->all()['payment'];
+        $payment = $request->all()['payment'];
+        $podaci = $request->all()['podaci'];
 		$iduser = Auth::id();
 		$quantity = 0;
 		foreach ($cart as $c) {
@@ -99,7 +103,8 @@ class ProductsController extends Controller
 			$history->idproduct = $idproduct;
 			$history->quantity = $quantity;
 			$history->price = $price;
-			$history->payment = $payment;
+            $history->payment = $payment;
+            $history->podaci = $podaci;
 			$history->save();
 			$product->amount -= $quantity;
 			$product->save();

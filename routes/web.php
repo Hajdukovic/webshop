@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +40,7 @@ Route::get('/addprod', 'App\Http\Controllers\ProductsController@create')->name('
 Route::post('/storeprod', 'App\Http\Controllers\ProductsController@store')->name('storeprod');
 Route::post('/changeamount/{id}', 'App\Http\Controllers\ProductsController@changeamount');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

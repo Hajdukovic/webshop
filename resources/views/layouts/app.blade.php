@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'V  O  L  T  O') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -92,17 +92,17 @@
 					
                    
                         @endguest
-						 <div style="position:relative; left:200px;">
+						 
 						  @if (session()->get('cart'))
 						       <li class="nav-item">
-						          <a href="{{ route('cart') }}"><img src="./slike/cart.png" height="40px" /></a> ({{ count(session()->get('cart')) }})
+						          <a href="{{ route('cart') }}" class="nav-link"><img src="slike/cart.png" height="25px" />Košarica ({{ count(session()->get('cart')) }}) </a> 
 						      </li>
 						  @else
 							  <li class="nav-item">
-						          <img src="./slike/cart.png" height="30px" /> prazna
+						         <p class="nav-link"> <img src="slike/cart.png" height="25px" /> Košarica je prazna </p>
 						      </li>
 						  @endif
-						 </div>
+						 
                     </ul>
                 </div>
             </div>

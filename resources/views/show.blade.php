@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container">
-
+<div class="row justify-content-center">
     <h1>Detaljni podaci o proizvodu</h1>
 	
 	@if ($product->image)
-	  <img src="{{$product->image}}" height="200px" />
+	  <img src="{{$product->image}}" />
     @else
       <p>Ovaj proizvod nema sliku.</p>
 	@endif
@@ -17,13 +17,13 @@
 	   <tr><th>Cijena: </th><td>{{ number_format($product->price,2,",",".") }} </td></tr>
 	</table>
 	
-    <div class="row justify-content-center">
+   
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Dodavanje u košaricu</div>
 
                 <div class="card-body">
-                    <form method="POST" action="/cartadd/{{$product->id}}">
+                    <form method="POST" action="http://localhost/webshop/public/cartadd/{{$product->id}}">
                         @csrf
                         
 			           <div class="form-group row">

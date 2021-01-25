@@ -20,7 +20,8 @@ class CreateHistoriesTable extends Migration
             $table->integer("quantity");
             $table->double("price");
             $table->timestamp("date");
-            $table->string("payment"); 
+            $table->string("payment");  
+            $table->string("podaci"); 
             $table->timestamps();
         });
     }
