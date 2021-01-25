@@ -5,16 +5,8 @@
     <div class="row justify-content-center">   
 	    
 		
-        @guest
-		
-		@else
-		@if (Auth::user()->role==2)
-	    <a href="{{ route('addprod') }}" class="btn btn-outline-primary" role="button" aria-pressed="true">Dodaj novi proizvod</a>
-		@endif
-		@endguest
-		
 
-		<h3><br/>Popis proizvoda</h3>
+		<h4><br/>Popis proizvoda</h4>
 		<br/>
 
         <table class="table sortable"  >
@@ -73,6 +65,16 @@
 		   @endforeach
         </table>
 	
+		
+        @guest
+		
+		@else
+		@if (Auth::user()->role==2)
+	    <a href="{{ route('addprod') }}" class="btn btn-outline-primary" role="button" aria-pressed="true">Dodaj novi proizvod</a>
+		@endif
+		@endguest
+
+
     </div>
 </div>
 @endsection

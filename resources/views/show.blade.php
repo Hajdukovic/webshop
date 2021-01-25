@@ -3,10 +3,10 @@
 @section('content')
 <div class="container">
 <div class="row justify-content-center">
-    <h1>Detaljni podaci o proizvodu</h1>
+    <h4>Detaljni podaci o proizvodu</h4>
 	
 	@if ($product->image)
-	  <img src="{{$product->image}}" />
+	  <img src="slike/{{$product->image}}" />
     @else
       <p>Ovaj proizvod nema sliku.</p>
 	@endif
@@ -28,20 +28,16 @@
                         
 			           <div class="form-group row">
                             <label for="kol1" class="col-md-4 col-form-label text-md-right">Količina</label>
+                            <input id="kol1" class="btn btn-light btn-sm" style="width:70px" type="number" name="kolicina" min="1" value="1" step="1" max="{{$product->amount}}" />
+                               
 
                             <div class="col-md-3">
-                                <input id="kol1" class="btn btn-light btn-sm" style="width:70px" 
-								       type="number" name="kolicina" min="1" value="1" step="1" max="{{$product->amount}}" />
-                            </div>
-                        </div>
-    
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary">
                                     Dodaj u košaricu
                                 </button>
                             </div>
                         </div>
+    
                     </form>
                 </div>
             </div>

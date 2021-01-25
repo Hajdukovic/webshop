@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">   
 	    
-		<h1>Povijest kupljenih proizvoda</h1>
+		<h4>Povijest kupljenih proizvoda</h4>
       
         <table class="table sortable">
             <tr><th>Kupac</th><th>Naziv proizvoda</th><th>Količina</th><th width="160px">Cijena [kn]</th><th>Ukupna cijena</th><th>Datum kupnje</th><th>Način plaćanja</th><th>Podaci za dostavu</th></tr>
