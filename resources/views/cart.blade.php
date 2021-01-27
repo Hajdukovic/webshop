@@ -4,66 +4,66 @@
 <div class="container">
     <div class="row justify-content-center">
 	    
-		<h3>Popis proizvoda u vašoj košarici</h3>
+		<h3>Proizvodi u Vašoj košarici</h3>
         
         <table class="table">
-		<tr><th>Naziv proizvoda</th><th>Količina</th><th width="140px">Cijena [kn]</th><th>Akcija</th></tr>
-           @foreach ($cart as $c)
-		     <tr>
-			   <td>{{$c['name']}}</td>
-			   <td>
-			      <form method="POST" action="cartup/{{$c['id']}}">
+			<tr><th>Naziv proizvoda</th><th>Količina</th><th width="140px">Iznos (kn)</th><th></th></tr>
+           
+		   @foreach ($cart as $c)
+		    <tr>
+			
+				<td>{{$c['name']}}</td>
+			   
+			    <td>
+			        <form method="POST" action="cartup/{{$c['id']}}">
 				      @csrf
 					    <input class="btn btn-light btn-sm" style="width:70px" type="number" name="kolicina" 
 						       min="1" max="{{$amounts[$c['id']]}}" value="{{$c['quantity']}}" step="1" />
 						<input class="btn btn-outline-primary btn-sm" type="submit" value="Promijeni količinu"/>
-				   </form>
-			   </td>
-			   <td align="right">{{number_format($c['price'],2,",",".")}}</td>
-			   <td>
+				    </form>
+			    </td>
+			    
+				<td align="right">{{number_format($c['price'],2,",",".")}}</td>
+			   
+			    <td>
 			      <a href="cartdel/{{$c['id']}}" class="btn btn-outline-danger btn-sm" role="button" aria-pressed="true">obriši</a>
-			   </td>
-			 </tr>
+			    </td>
+			 
+			</tr>
 		   @endforeach
 		  
-		   <tr>
-			   <td colspan="2" align="right">Iznos računa bez PDV-a:</td>
-			   <td align="right"><b>{{number_format($ukupno,2,",",".")}}</b></td>
-			   
-			 </tr>
+		    <tr>
+			    <td colspan="2" align="right">Ukupna cijena proizvoda:</td>
+			    <td align="right"><b>{{number_format($ukupno,2,",",".")}}</b></td>
+			</tr>
 
-			 <tr>
-			   <td colspan="2" align="right">Iznos PDV-a:</td>
-			   <td align="right"><b>{{number_format(($pdv),2,",",".")}}</b></td>
-			   
-			 </tr>
+			<tr>
+			    <td></td>
+			    <td colspan="2" align="right">PDV je uračunat u cijenu</td>
+			</tr>
 			
-			 <tr>
-			   <td colspan="2" align="right">Usluga dostave:</td>
-			   
-			    <td align="right"><b>{{number_format($postarina,2,",",".")}}</b></td> 
-			   
-			 </tr>
+			<tr>
+				<td colspan="2" align="right">Usluga dostave:</td>
+				<td align="right"><b>{{number_format($postarina,2,",",".")}}</b></td> 
+			</tr>
 
 			 <tr>
-			   <td colspan="2" align="right">Iznos računa s PDV-om:</td>
-			   <td align="right"><b>{{number_format(($ukupno + $pdv + $postarina),2,",",".")}}</b></td>
+			   <td colspan="2" align="right">Ukupan iznos računa:</td>
+			   <td align="right"><b>{{number_format(($ukupno  + $postarina),2,",",".")}}</b></td>
 			   
 			 </tr>
-
-
-
-        </table>
+ 		</table>
 		
-		@guest
+			@guest
 		   <p align="center">Za dovršetak kupovine, molimo Vas da se prijavite!</p>
 		   <a href="login" class="btn btn-outline-primary" role="button" aria-pressed="true" style="width:25%">Prijava</a>
-		@else
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Kupovina</div>
+			@else
+
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-8">
+					<div class="card">
+						<div class="card-header">Podaci za kupnju</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('kupi') }}">
@@ -72,7 +72,7 @@
 
                         <div class="form-group row">
 
-							<label for="area">Podaci za dostavu (Unesite Vaše IME I PREZIME, ADRESU DOSTAVE I BROJ TELEFONA) : </label> <br/>
+							<label for="area">Unesite detalje za dostavu ( IME I PREZIME, ADRESU DOSTAVE I BROJ TELEFONA ) : </label> <br/>
 							<br/><textarea name="podaci" id="area" cols="90" rows="5"></textarea>
 
                             <label for="email" class="col-md-4 col-form-label text-md-right">Odaberite način plaćanja:</label>

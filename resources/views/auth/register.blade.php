@@ -5,16 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Registracija korisnika') }}</div>
+                <div class="card-header">{{ __('Kreirajte korisnički račun') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Ime</label>
+                            <label for="name" class="col-md-3 col-form-label text-md-right">Ime</label>
 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="" required autofocus>
 
                                 @error('name')
@@ -26,9 +26,9 @@
                         </div>
 						
 						<div class="form-group row">
-                            <label for="surname" class="col-md-4 col-form-label text-md-right">Prezime</label>
+                            <label for="surname" class="col-md-3 col-form-label text-md-right">Prezime</label>
 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="" required autofocus>
 
                                 @error('surname')
@@ -39,22 +39,19 @@
                             </div>
                         </div>
 
-
                         <div class="form-group row">
-                            <label for="gender" class="col-md-4 col-form-label text-md-right">Spol</label>
+                            <label for="gender" class="col-md-3 col-form-label text-md-right">Spol</label>
 
                             <div class="col-md-3">
                                 <select id="gender" name="gender" class="form-control">
-                                    <option value="1"> Žensko </option>
-                                    <option value="2"> Muško </option>
-                                    <option value="3" default> Neodređeno </option>
+                                <option value="2"> Muško </option>
+                                <option value="1"> Žensko </option>
                                 </select>
                             </div>
                         </div>
 
-
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
+                            <label for="email" class="col-md-3 col-form-label text-md-right">Email</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -68,9 +65,9 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">Lozinka</label>
+                            <label for="password" class="col-md-3 col-form-label text-md-right">Lozinka</label>
 
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
@@ -82,15 +79,16 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Ponovite loziku</label>
+                            <label for="password-confirm" class="col-md-3 col-form-label text-md-right">Ponovite loziku</label>
 
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
+                            <br/>
                                 <button type="submit" class="btn btn-primary">
                                     Registracija
                                 </button>

@@ -9,11 +9,11 @@
 		<h4><br/>Popis proizvoda</h4>
 		<br/>
 
-        <table class="table sortable"  >
+        <table class="table sortable" >
 		
 		<tr>
 		
-			<th>Slika</th><th>Naziv proizvoda</th><th>Cijena [kn]</th><th>Kupnja</th>
+			<th>Slika</th><th>Naziv proizvoda</th><th>Cijena (kn)</th><th>Kupnja</th>
 				@guest
 				@else
 				@if (Auth::user()->role==2)
@@ -24,12 +24,12 @@
 		</tr>
 
            @foreach ($products as $p)
-		     <tr>
+		    <tr>
 			 			   <td>
 							@if ($p->image)
 
 						<!--	css slika    .     border: 3px solid #ddd;  border-radius: 10px;  padding: 5px;  width: 150px; -->
-							<img src="{{$p->image}}" style="border: 3px solid #ddd;  border-radius: 10px;  padding: 5px;  width: 150px;" />
+							<img src="{{$p->image}}" style="border: 3px solid #ddd;  border-radius: 10px;  padding: 5px;  width:100px; height: 100px;" />
 							@else
 							<p>Ovaj proizvod nema sliku.</p>
 							@endif
@@ -37,7 +37,7 @@
 							
 							</td>
 
-			   <td><a class="nav-link" href="show/{{$p->id}}">{{$p->name}}</a></td>
+			   <td><a style="width:170px" class="nav-link" href="show/{{$p->id}}">{{$p->name}}</a></td>
 			   <td style="padding-right:70px;">{{number_format($p->price,2,",",".")}}</td>
 			   <td>
 			       <form method="POST" action="cartadd/{{$p->id}}">
@@ -61,7 +61,7 @@
 					</td>
 		       @endif
 		       @endguest
-			 </tr>
+			</tr>
 		   @endforeach
         </table>
 	
