@@ -27,8 +27,6 @@ Route::get('/cart', 'App\Http\Controllers\ProductsController@cart' )->name('cart
 
 Route::post('/kupi', 'App\Http\Controllers\ProductsController@buyFromCart')->name('kupi');
 
-Route::get('/home', 'App\Http\Controllers\ProductsController@index' );
-
 Route::get('/history', 'App\Http\Controllers\ProductsController@history' )->name('history');
 Route::get('/historyAdmin', 'App\Http\Controllers\ProductsController@historyAdmin' )->name('historyAdmin');
 

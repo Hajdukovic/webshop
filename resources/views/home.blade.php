@@ -14,7 +14,20 @@
                         </div>
                     @endif
 
-                    {{ __('Uspiješno ste se prijavili!') }}
+                    {{ __('Uspiješno ste se prijavili, možete nastaviti s kupnjom!') }}
+                    <br/><br/>
+                    <li class="nav-item">
+                    
+
+                                <a class="nav-link" href="{{ route('pocetna') }}">Nastavak na pregled proizvoda</a>
+                            </li>
+                            <br/>
+
+                            @if (session()->get('cart'))
+						       <li class="nav-item">
+						          <a href="{{ route('cart') }}" class="nav-link"><img src="slike/cart.png" height="25px" />Nastavak na košaricu ({{ count(session()->get('cart')) }}) </a> 
+						      </li>
+						  @endif
                 </div>
             </div>
         </div>

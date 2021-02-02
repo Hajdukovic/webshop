@@ -67,7 +67,6 @@
 	
 		
         @guest
-		
 		@else
 		@if (Auth::user()->role==2)
 	    <a href="{{ route('addprod') }}" class="btn btn-outline-primary" role="button" aria-pressed="true">Dodaj novi proizvod</a>
